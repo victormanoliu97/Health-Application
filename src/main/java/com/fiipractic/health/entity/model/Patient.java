@@ -1,11 +1,8 @@
 package com.fiipractic.health.entity.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "patients")
@@ -30,6 +27,14 @@ public class Patient {
     private Email patientEmail;
 
     private PhoneNumber patientPhoneNumber;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "patient")
+    private List<Appointment> appointmentList;
+
+    public Patient()
+    {
+        appointmentList = new ArrayList<>();
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -59,6 +64,10 @@ public class Patient {
         this.patientPhoneNumber = patientPhoneNumber;
     }
 
+    public void setAppointmentList(List<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
+    }
+
     public Long getId() {
         return id;
     }
@@ -85,5 +94,9 @@ public class Patient {
 
     public PhoneNumber getPatientPhoneNumber() {
         return patientPhoneNumber;
+    }
+
+    public List<Appointment> getAppointmentList() {
+        return appointmentList;
     }
 }
