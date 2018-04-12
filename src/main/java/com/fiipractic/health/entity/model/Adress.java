@@ -1,9 +1,6 @@
 package com.fiipractic.health.entity.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Victor Manoliu on 10-Apr-18
@@ -14,6 +11,7 @@ public class Adress {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adressId;
 
     @Column(name = "street")

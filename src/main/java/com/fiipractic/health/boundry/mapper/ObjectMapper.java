@@ -5,7 +5,12 @@ package com.fiipractic.health.boundry.mapper;
 public class ObjectMapper {
 
     public static void map2DoctorDb(Doctor doctorDb, Doctor doctorRequest){
-        doctorDb.setName(doctorRequest.getName());
+        doctorDb.setDoctorFirstName(doctorRequest.getDoctorFirstName());
+        doctorDb.setDoctorLastName(doctorRequest.getDoctorLastName());
         doctorDb.setFunction(doctorRequest.getFunction());
+        doctorDb.setAppointmentList(doctorRequest.getAppointmentList());
+        doctorDb.setDoctorAdress(doctorRequest.getDoctorAdress());
+        doctorDb.setDoctorEmail(doctorRequest.getDoctorEmail());
+        doctorDb.setDoctorPhoneNumber(doctorRequest.getDoctorPhoneNumber());
     }
 }

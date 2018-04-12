@@ -9,7 +9,7 @@ import java.util.List;
 public class Patient {
 
     @Id
-    @Column(name = "patient_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -19,13 +19,16 @@ public class Patient {
     @Column(name = "patient_last_name", length = 60)
     private String patientLastName;
 
-    @Column(name = "patient_age", nullable = false)
+    @Column(name = "patient_age", length = 20)
     private Long patientAge;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Adress patientAdress;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Email patientEmail;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private PhoneNumber patientPhoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "patient")

@@ -10,9 +10,9 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     public List<Patient> findByPatientAge(Long patientAge);
 
-    public List<Patient> findAllByPatientName(String patientName);
+    public List<Patient> findAllByPatientFirstName(String patientFirstName);
 
-    public List<Patient> findAllByPatientNameAndPatientAge(String patientName, Long patientAge);
+    public List<Patient> findAllByPatientFirstNameAndPatientAge(String patientFirstName, Long patientAge);
 
 
 }

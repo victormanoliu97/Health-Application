@@ -15,6 +15,7 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointmentId;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Adress appointmentAdress;
 
     @Temporal(TemporalType.DATE)

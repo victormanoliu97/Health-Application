@@ -22,10 +22,13 @@ public class Doctor {
     @Column(name = "function")
     private String function;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Adress doctorAdress;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private Email doctorEmail;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private PhoneNumber doctorPhoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "doctor")
