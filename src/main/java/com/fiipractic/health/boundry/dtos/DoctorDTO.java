@@ -1,8 +1,13 @@
 package com.fiipractic.health.boundry.dtos;
 
 import com.fiipractic.health.entity.model.Adress;
+import com.fiipractic.health.entity.model.Appointment;
 import com.fiipractic.health.entity.model.Email;
 import com.fiipractic.health.entity.model.PhoneNumber;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -10,67 +15,83 @@ import com.fiipractic.health.entity.model.PhoneNumber;
  */
 public class DoctorDTO {
 
-    private Long doctor_id;
-    private String firstName;
-    private String lastName;
+    private Long id;
+
+    private String doctorFirstName;
+
+    private String doctorLastName;
+
     private String function;
-    private PhoneNumber phoneNumber;
-    private Adress address;
-    private Email email;
 
-    public Long getDoctor_id() {
-        return doctor_id;
+    private Adress doctorAdress;
+
+    private Email doctorEmail;
+
+    private PhoneNumber doctorPhoneNumber;
+
+    private List<Appointment> appointmentList;
+
+    public List<Appointment> getAppointmentList() {
+        return appointmentList;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public Long getId() {
+        return id;
     }
 
     public String getFunction() {
         return function;
     }
 
-    public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
+    public Adress getDoctorAdress() {
+        return doctorAdress;
     }
 
-    public Adress getAddress() {
-        return address;
+    public Email getDoctorEmail() {
+        return doctorEmail;
     }
 
-    public Email getEmail() {
-        return email;
+    public PhoneNumber getDoctorPhoneNumber() {
+        return doctorPhoneNumber;
     }
 
-    public void setDoctor_id(Long doctor_id) {
-        this.doctor_id = doctor_id;
+    public String getDoctorFirstName() {
+        return doctorFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getDoctorLastName() {
+        return doctorLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAppointmentList(List<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setFunction(String function) {
         this.function = function;
     }
 
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setDoctorAdress(Adress doctorAdress) {
+        this.doctorAdress = doctorAdress;
     }
 
-    public void setAddress(Adress address) {
-        this.address = address;
+    public void setDoctorEmail(Email doctorEmail) {
+        this.doctorEmail = doctorEmail;
     }
 
-    public void setEmail(Email email) {
-        this.email = email;
+    public void setDoctorFirstName(String doctorFirstName) {
+        this.doctorFirstName = doctorFirstName;
+    }
+
+    public void setDoctorLastName(String doctorLastName) {
+        this.doctorLastName = doctorLastName;
+    }
+
+    public void setDoctorPhoneNumber(PhoneNumber doctorPhoneNumber) {
+        this.doctorPhoneNumber = doctorPhoneNumber;
     }
 }

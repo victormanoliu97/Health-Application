@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
@@ -16,8 +17,10 @@ import java.util.Optional;
 /**
  * @author Victor Manoliu on 11-Apr-18
  */
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 
+    @Autowired
     private AppointmentRepository appointmentRepository;
 
     @Override
@@ -43,23 +46,18 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> getAppointmentByPatient(Patient patient) {
-        return null;
+    public List<Appointment> getAppointmentByPatient(Long patientId) {
+        return appointmentRepository.findAppointmentsByPatient_Id(patientId);
     }
 
     @Override
-    public List<Appointment> getAppointmentByDoctor(Doctor doctor) {
-        return null;
+    public List<Appointment> getAppointmentByDoctor(Long doctorId) {
+        return appointmentRepository.findAppointmentsByDoctor_Id(doctorId);
     }
 
     @Override
-    public List<Appointment> getAllApointmentsByDoctorEndTimeGreater(Doctor doctor, Date endDate) {
-        return null;
-    }
-
-    @Override
-    public List<Appointment> getAllApointmentsByEndTimeGreater(Date endDate) {
-        return null;
+    public Appointment getById(Long id) {
+        return appointmentRepository.findById(id).orElse(null);
     }
 
 

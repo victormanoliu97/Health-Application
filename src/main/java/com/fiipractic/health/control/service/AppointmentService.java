@@ -20,11 +20,10 @@ public interface AppointmentService {
 
     Appointment saveAppointment(Appointment appointment);
 
-    List<Appointment> getAppointmentByPatient(Patient patient);
+    List<Appointment> getAppointmentByPatient(Long patientId);
 
-    List<Appointment> getAppointmentByDoctor(Doctor doctor);
+    List<Appointment> getAppointmentByDoctor(Long doctorId);
 
-    List<Appointment> getAllApointmentsByDoctorEndTimeGreater(Doctor doctor, Date endDate);
+    Appointment getById(Long id);
 
-    List<Appointment> getAllApointmentsByEndTimeGreater(Date endDate);
 }
