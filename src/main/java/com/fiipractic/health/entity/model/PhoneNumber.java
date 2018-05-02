@@ -1,5 +1,7 @@
 package com.fiipractic.health.entity.model;
 
+import com.fiipractic.health.validators.PhoneNumberAnnotation;
+
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
@@ -16,7 +18,7 @@ public class PhoneNumber {
     private Long phoneNumberId;
 
     @Column(name = "number")
-    @Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$" , message = "You must enter a valid phone number")
+    @PhoneNumberAnnotation
     private String phoneNumber;
 
     public Long getPhoneNumberId() {

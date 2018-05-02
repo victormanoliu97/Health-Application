@@ -1,5 +1,7 @@
 package com.fiipractic.health.entity.model;
 
+import com.fiipractic.health.validators.EmailAnnotation;
+
 import javax.persistence.*;
 
 /**
@@ -15,7 +17,8 @@ public class Email {
     private Long emailId;
 
     @Column(name = "email")
-    @javax.validation.constraints.Email
+    //@javax.validation.constraints.Email
+    @EmailAnnotation
     private String emailAdress;
 
     public Long getEmailId() {
