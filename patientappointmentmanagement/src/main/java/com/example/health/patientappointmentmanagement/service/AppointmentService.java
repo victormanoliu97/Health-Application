@@ -10,4 +10,6 @@ import java.text.ParseException;
 public interface AppointmentService {
 
     String makeAppointment(AppointmentDTO appointment) throws ParseException, JSONException;
+
+    String getPatientAppointments(Integer patientId) throws JSONException;
 }

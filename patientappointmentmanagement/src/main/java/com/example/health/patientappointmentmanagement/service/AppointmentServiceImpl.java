@@ -1,6 +1,7 @@
 package com.example.health.patientappointmentmanagement.service;
 
 import com.example.health.patientappointmentmanagement.boundry.transferobject.AppointmentDTO;
+import com.example.health.patientappointmentmanagement.entity.pojo.AppointmentPOJO;
 import com.example.health.patientappointmentmanagement.entity.repository.AppointmentRepository;
 import com.example.health.patientappointmentmanagement.entity.repository.DoctorRepository;
 import com.example.health.patientappointmentmanagement.entity.repository.DoctorSpecialityRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -70,4 +72,65 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return gson.toJson(jsonObject);
     }
+
+    @Override
+    public String getPatientAppointments(Integer patientId) throws JSONException {
+        List<Integer> doctorIdsList = appointmentRepository.getDoctorIdOfAppointments(patientId);
+        List<String> causeList = appointmentRepository.getCausesOfAppointments(patientId);
+        List<Integer> specialityIdsList = appointmentRepository.getSpecialityIdOfAppointments(patientId);
+        List<Date> startTimesList =  appointmentRepository.getStartTimeOfAppointments(patientId);
+        List<Date> endTimeList = appointmentRepository.getEndTimeOfAppointments(patientId);
+        List<Integer> appointmentsIdsList = appointmentRepository.getIdsOfAppointments(patientId);
+        List<AppointmentPOJO> appointmentPOJOList = new ArrayList<>();
+
+        List<AppointmentPOJO> appointmentPOJOListDistinct = new ArrayList<>();
+
+        for(Integer id : doctorIdsList) {
+            for(String cause : causeList) {
+                for(Date date1 : startTimesList) {
+                    for(Date date2 : endTimeList) {
+                        for(Integer id2 : specialityIdsList) {
+                                for(Integer id3 : appointmentsIdsList) {
+                                    String currentDoctorFirstName = doctorRepository.getDoctorFirstNameById(id);
+                                    String currentDoctorLastName = doctorRepository.getDoctorLastNameById(id);
+                                    String currentDoctorEmail = doctorRepository.getDoctorEmailById(id);
+                                    String currentCause = cause;
+                                    Date currentStartTime = date1;
+                                    Date currentEndTime = date2;
+                                    String currentSpecialityName = specialityRepository.getSpecialityIdByName(id2);
+
+                                    appointmentPOJOList.add(new AppointmentPOJO(currentDoctorFirstName, currentDoctorLastName,
+                                            currentDoctorEmail, currentCause, currentSpecialityName, currentStartTime, currentEndTime,
+                                            id3));
+                                }
+                        }
+                    }
+                }
+            }
+        }
+
+        for(AppointmentPOJO i : appointmentPOJOList) {
+            boolean isFound = false;
+            for(AppointmentPOJO j : appointmentPOJOListDistinct) {
+                if(j.getAppointmentId().equals(i.getAppointmentId()) || (j.equals(i))
+                        || j.getStarTime().equals(i.getStarTime()) || j.getEndTime().equals(i.getStarTime())
+                        || j.getEndTime().equals(i.getEndTime())
+                        || j.getAppointmentCause().equals(i.getAppointmentCause())
+                        || j.getDoctorFirstName().equals(i.getDoctorFirstName())
+                        || j.getDoctorEmail().equals(i.getDoctorEmail())
+                        || j.getSpecialityName().equals(i.getSpecialityName())) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if(!isFound) appointmentPOJOListDistinct.add(i);
+        }
+
+
+        Gson gsonBuilder = new GsonBuilder().create();
+
+        return gsonBuilder.toJson(appointmentPOJOListDistinct);
+    }
+
+
 }

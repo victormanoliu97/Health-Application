@@ -1,6 +1,7 @@
 package com.example.health.patientappointmentmanagement.boundry.controller;
 
 import com.example.health.patientappointmentmanagement.boundry.transferobject.AppointmentDTO;
+import com.example.health.patientappointmentmanagement.boundry.transferobject.PatientDTO;
 import com.example.health.patientappointmentmanagement.service.AppointmentService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,11 @@ public class AppointmentController {
     @CrossOrigin(origins = "*")
     public String makeAppointment(@RequestBody AppointmentDTO appointment) throws ParseException, JSONException {
         return appointmentService.makeAppointment(appointment);
+    }
+
+    @PostMapping(value = "patient-appointments")
+    @CrossOrigin(origins = "*")
+    public String getPatientAppointments(@RequestBody PatientDTO patientDTO) throws JSONException {
+        return appointmentService.getPatientAppointments(patientDTO.getIdPatient());
     }
 }

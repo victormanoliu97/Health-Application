@@ -17,4 +17,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
     @Query(value = "SELECT function FROM DOCTORS WHERE id_doctor = :id_doctor", nativeQuery = true)
     String getDoctorFunctionById(Integer idDoctor);
+
+    @Query(value = "SELECT email FROM DOCTORS WHERE id_doctor = :id_doctor", nativeQuery = true)
+    String getDoctorEmailById(@Param("id_doctor")Integer idDoctor);
 }

@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
@@ -21,4 +23,24 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
                          @Param("cause")String cause,
                          @Param("id_speciality")Integer idSpeciality,
                          @Param("start_time")Date startTime, @Param("end_time")Date endTime);
+
+
+
+    @Query(value = "SELECT id_doctor FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<Integer> getDoctorIdOfAppointments(@Param("id_patient")Integer idPatient);
+
+    @Query(value = "SELECT cause FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<String> getCausesOfAppointments(@Param("id_patient")Integer idPatient);
+
+    @Query(value = "SELECT id_speciality FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<Integer> getSpecialityIdOfAppointments(@Param("id_patient")Integer idPatient);
+
+    @Query(value = "SELECT start_time FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<Date> getStartTimeOfAppointments(@Param("id_patient")Integer idPatient);
+
+    @Query(value = "SELECT end_time FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<Date> getEndTimeOfAppointments(@Param("id_patient")Integer idPatient);
+
+    @Query(value = "SELECT id FROM APPOINTMENTS WHERE id_patient = :id_patient", nativeQuery = true)
+    List<Integer> getIdsOfAppointments(@Param("id_patient")Integer idPatient);
 }
