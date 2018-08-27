@@ -24,4 +24,6 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
     @Query(value = "SELECT id_patient FROM patients WHERE CNP = :CNP AND email = :email", nativeQuery = true)
     Integer checkPatientExists(@Param("CNP")String CNP, @Param("email")String email);
 
+
+
 }

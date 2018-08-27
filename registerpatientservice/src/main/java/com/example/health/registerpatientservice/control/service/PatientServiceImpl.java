@@ -91,4 +91,5 @@ public class PatientServiceImpl implements PatientService {
 
         javaMailSender.send(mimeMessage);
     }
+
 }

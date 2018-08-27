@@ -39,13 +39,15 @@ public class LoginPatientServiceImpl implements LoginPatientService {
             String patientFirstName = patientRepository.getUserFirstName(patientId);
             String patientLastName = patientRepository.getUserLastName(patientId);
             String patientEmail = patientRepository.getUserEmail(patientId);
+            String patientCNP = patientRepository.getUserCNP(patientId);
 
             responseJson.put("Type", "Success")
                         .put("Message", "Patient logged in with success")
                         .put("status", 200)
                         .put("firstName", patientFirstName)
                         .put("lastName", patientLastName)
-                        .put("email", patientEmail);
+                        .put("email", patientEmail)
+                        .put("cnp", patientCNP);
         }
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(String.valueOf(responseJson)).getAsJsonObject();

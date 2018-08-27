@@ -16,4 +16,5 @@ public interface PatientService {
     boolean patientAlreadyExists(PatientDTO patient);
 
     void sendEmail(PatientDTO patient) throws MessagingException;
+
 }
