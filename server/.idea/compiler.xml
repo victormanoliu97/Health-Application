@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="appointmentreminderservice" />
         <module name="loginpatientservice" />
         <module name="patientappointmentmanagement" />
         <module name="registerpatientservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="appointmentreminderservice" target="1.8" />
       <module name="loginpatientservice" target="1.8" />
       <module name="patientappointmentmanagement" target="1.8" />
       <module name="registerpatientservice" target="1.8" />
