@@ -12,4 +12,6 @@ public interface AppointmentService {
     String makeAppointment(AppointmentDTO appointment) throws ParseException, JSONException;
 
     String getPatientAppointments(Integer patientId) throws JSONException;
+
+    String deleteAppointment(Integer id) throws JSONException;
 }

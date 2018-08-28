@@ -47,7 +47,8 @@ public class LoginPatientServiceImpl implements LoginPatientService {
                         .put("firstName", patientFirstName)
                         .put("lastName", patientLastName)
                         .put("email", patientEmail)
-                        .put("cnp", patientCNP);
+                        .put("cnp", patientCNP)
+                        .put("id_patient", patientId);
         }
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(String.valueOf(responseJson)).getAsJsonObject();

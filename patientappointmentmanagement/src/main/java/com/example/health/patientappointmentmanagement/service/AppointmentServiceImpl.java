@@ -132,5 +132,36 @@ public class AppointmentServiceImpl implements AppointmentService {
         return gsonBuilder.toJson(appointmentPOJOListDistinct);
     }
 
+    @Override
+    public String deleteAppointment(Integer id) throws JSONException {
+        JSONObject responseJson = new JSONObject();
+        int responseCode;
+
+        if(appointmentRepository.checkAppointmentExistsById(id) == null) {
+            responseJson.put("Type", "Fail")
+                    .put("Message", "Appointment with that id does not exist in the database")
+                    .put("status", 400);
+            responseCode = 400;
+        }
+        else {
+            responseJson.put("Type", "Success")
+                    .put("Message", "Appointment deleted with success")
+                    .put("status", 200);
+            responseCode = 200;
+        }
+
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = jsonParser.parse(String.valueOf(responseJson)).getAsJsonObject();
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String prettyResponse = gson.toJson(jsonObject);
+
+        if(responseCode == 200) {
+            appointmentRepository.deleteAppointmentById(id);
+        }
+        return prettyResponse;
+    }
+
 
 }
