@@ -1,4 +1,4 @@
-package com.example.health.appointmentreminderservice;
+package com.example.health.appointmentreminderservice.entity.model;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
