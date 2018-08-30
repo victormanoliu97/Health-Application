@@ -1,0 +1,60 @@
+.button {
+    margin-top: 0px;
+  }
+  .button button {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    color: white;
+  }
+  .button button:focus {
+    outline: none;
+  }
+  .button button:hover {
+    background: rgb(0, 45, 179);
+  }
+  .button button:active {
+    color: #f1f1f1;
+  }
+  .button .default {
+    background: rgb(51, 102, 255);
+    font-size: 18px;
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+  }
+  .button .long {
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: #5D737E;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .button .long:active {
+    color: #f1f1f1;
+  }
+  .button .normal {
+    margin-top: 20px;
+    border-radius: 3px;
+    background: #5D737E;
+    width: 100px;
+    height: 35px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  .button .normal:active {
+    box-shadow: 0.5px 0.5px 1.5px rgba(0, 0, 0, 0.4);
+  }
+  .button .small {
+    margin-top: 20px;
+    background: #5D737E;
+    font-size: 10px;
+    width: 70px;
+    height: 30px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(22, 4, 4, 0.4);
+  }
+  .button .small:active {
+    box-shadow: 0.5px 0.5px 1.5px rgba(0, 0, 0, 0.4);
+  }
